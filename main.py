@@ -11,6 +11,9 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET', 'POST'])
 def index():
+    if os.path.exists('video.mp4'):
+        os.remove('video.mp4')
+
     if request.method == 'POST':
         audio_url = request.form.get('audio-url')
         image_url = request.form.get('image-url')
